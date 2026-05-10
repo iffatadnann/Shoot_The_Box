@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class ActivateTeleportationRay : MonoBehaviour
 {
+    public static ActivateTeleportationRay Instance;
     public GameObject leftTeleportation;
     public GameObject rightTeleportation;
 
@@ -16,15 +17,27 @@ public class ActivateTeleportationRay : MonoBehaviour
     public XRRayInteractor leftRay;
     public XRRayInteractor rightRay;
 
-
-
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
         bool isLeftRayHovering = leftRay.TryGetHitInfo(out Vector3 leftPos, out Vector3 leftNormal, out int leftNumber, out bool leftValid);
+
         leftTeleportation.SetActive(isLeftRayHovering && leftCancel.action.ReadValue<float>() == 0 && leftActivate.action.ReadValue<float>() > 0.1f);
+
         bool isRightRayHovering = rightRay.TryGetHitInfo(out Vector3 rightPos, out Vector3 rightNormal, out int rightNumber, out bool rightValid);
+
         rightTeleportation.SetActive(isRightRayHovering && rightCancel.action.ReadValue<float>() == 0 && rightActivate.action.ReadValue<float>() > 0.1f);
 
     }
