@@ -50,6 +50,18 @@ public class ScoreManager : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
             UpdateTimerUI();
+
+            // --- NEW: HURRY UP EFFECT ---
+            if (timeRemaining <= 5f)
+            {
+                // 1. Turn text red
+                timerText.color = Color.red;
+
+                // 2. Make it pulse using a Sine wave
+                // This creates a smooth 0.8 to 1.2 size loop
+                float pulse = 1f + Mathf.Sin(Time.time * 10f) * 0.1f;
+                timerText.transform.localScale = new Vector3(pulse, pulse, pulse);
+            }
         }
         else
         {

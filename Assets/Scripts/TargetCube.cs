@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class TargetCube : MonoBehaviour
 {
-    public GameObject popupTextPrefab; // A small UI prefab that says "+10"
+    public GameObject popupTextPrefab;
 
-    // This is called when your bullet hits the cube's collider
+    // 1. Just declare the variable here
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        // 2. Initialize it when the game starts
+        audioSource = GetComponent<AudioSource>();
+      
+    }
+
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("I was hit by: " + collision.gameObject.name); // THIS LINE HELPS YOU SEE THE TRUTH
+        Debug.Log("I was hit by: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Bullet"))
         {
             HandleHit();
@@ -18,16 +27,24 @@ public class TargetCube : MonoBehaviour
 
     public void HandleHit()
     {
-        // 1. Tell manager to add points
         ScoreManager.Instance.AddScore(10);
 
-        // 2. Spawn the +10 message at the cube's position
         if (popupTextPrefab != null)
         {
             Instantiate(popupTextPrefab, transform.position, Quaternion.identity);
         }
 
-        // 3. Destroy the cube
-        Destroy(gameObject);
+        // 3. Play the sound here before the object is destroyed
+        if (audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.Play();
+        }
+
+        // NOTE: If you destroy the object immediately, the sound will cut off!
+        // To fix that, we hide the cube and destroy it after 1 second.
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        Destroy(gameObject, 1.0f);
     }
 }

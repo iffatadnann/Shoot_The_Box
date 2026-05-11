@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 615124524381025538}
   - component: {fileID: 4434556452512457615}
   - component: {fileID: 3927691635663173730}
+  - component: {fileID: 8786791271402089409}
+  - component: {fileID: 6994326948208941802}
   m_Layer: 7
   m_Name: cube
   m_TagString: Untagged
@@ -301,3 +303,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupTextPrefab: {fileID: 6069641427493220499, guid: 2c8d7119e380c6b469166890e64956fb,
     type: 3}
+--- !u!114 &8786791271402089409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570644296739729898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85060f47d1f48f4b8fa77fa44c21a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6994326948208941802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570644296739729898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aaeb7caa453d954ca6d83d096dc313c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFloating: 0
