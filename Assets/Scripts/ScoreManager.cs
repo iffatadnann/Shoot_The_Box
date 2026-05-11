@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement; // Needed to restart the game
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance; // Allows cubes to find this easily
+    public AudioClip winSound;
+    public AudioClip loseSound;
+    public AudioSource backgroundMusic;
 
     [Header("UI Elements")]
     public TextMeshProUGUI scoreText;
@@ -90,12 +93,12 @@ public class ScoreManager : MonoBehaviour
     {
         if (isGameOver) return; // Prevent this from running twice
         isGameOver = true;
-
+        backgroundMusic.Stop(); // Stop the happy music
         // 1. Show the UI
         winUI.SetActive(true);
 
-        // 2. Play Sound (Spatial audio makes this feel great in VR)
-        //AudioSource.PlayClipAtPoint(victorySound, transform.position);
+        // 2. Play Sound 
+        AudioSource.PlayClipAtPoint(winSound, transform.position);
 
         // 3. Freeze the game world
         Time.timeScale = 0;
@@ -106,7 +109,9 @@ public class ScoreManager : MonoBehaviour
     void LoseGame()
     {
         isGameOver = true;
+        backgroundMusic.Stop(); // Stop the happy music
         loseUI.SetActive(true);
+        AudioSource.PlayClipAtPoint(loseSound, transform.position);
         Time.timeScale = 0;
     }
 

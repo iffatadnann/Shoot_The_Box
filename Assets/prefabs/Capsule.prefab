@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538a516a94336f740afef768c08db750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cylinderHitSound: {fileID: 8300000, guid: f09004f0a826f5549bf69173e94b8e00, type: 3}
 --- !u!114 &1624452542783163386
 MonoBehaviour:
   m_ObjectHideFlags: 0

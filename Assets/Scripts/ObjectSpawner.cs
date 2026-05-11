@@ -6,6 +6,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     public GameObject cubePrefab;
     public GameObject cylinderPrefab;
+    public AudioClip popSound;
 
     // We store the cubes here so we can tell them to float later
     private List<FloatingBehaviour> cubeList = new List<FloatingBehaviour>();
@@ -65,6 +66,9 @@ public class ObjectSpawner : MonoBehaviour
 
         if (isCube)
             obj.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 0.6f, 1f, 0.7f, 1f);
+
+        // Plays the pop sound at the specific spot the cube appeared
+        AudioSource.PlayClipAtPoint(popSound, spawnPoint);
 
         return obj;
     }

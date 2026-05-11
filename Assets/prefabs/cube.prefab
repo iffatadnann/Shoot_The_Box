@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupTextPrefab: {fileID: 6069641427493220499, guid: 2c8d7119e380c6b469166890e64956fb,
     type: 3}
+  cubeHitSound: {fileID: 8300000, guid: 1203612d65ccbff48bfc60f8bc5f40c6, type: 3}
 --- !u!114 &8786791271402089409
 MonoBehaviour:
   m_ObjectHideFlags: 0
