@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
 
     [Header("Game Settings")]
     public int scoreToWin = 100;
-    public float timeRemaining = 30f; // 30 seconds to play
+    public float timeRemaining = 60f; // 30 seconds to play
 
     private int currentScore = 0;
     private bool isGameOver = false;
